@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :blogs
+  resources :products
   devise_for :users
-  root 'blogs#index'
 end

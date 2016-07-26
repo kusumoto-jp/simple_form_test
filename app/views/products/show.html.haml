@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Released on:
+  = @product.released_on
+%p
+  %b Rating:
+  = @product.rating
+%p
+  %b Discontinued:
+  = @product.discontinued
+%p
+  %b Publisher:
+  = @product.publisher
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
