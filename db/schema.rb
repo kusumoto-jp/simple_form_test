@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726123724) do
+ActiveRecord::Schema.define(version: 20160726123826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160726123724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["product_id"], name: "index_categorizations_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -66,5 +76,7 @@ ActiveRecord::Schema.define(version: 20160726123724) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "products"
   add_foreign_key "products", "publishers"
 end
