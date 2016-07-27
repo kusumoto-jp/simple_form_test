@@ -2,12 +2,13 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :price
+    = f.input :name, label: '名前'
+    = f.input :price, label: '値段'
     = f.input :released_on
-    = f.input :rating
+    = f.input :rating, collection: 1..5, as: :radio_buttons, item_wrapper_class: "inline"
     = f.input :discontinued
     = f.association :publisher
+    = f.association :categories, as: :check_boxes
 
   .form-actions
     = f.button :submit

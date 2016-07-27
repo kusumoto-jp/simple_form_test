@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :price, :released_on, :rating, :discontinued, :publisher_id)
+      params.require(:product).permit(:name, :price, :released_on, :rating, :discontinued, :publisher_id, category_ids: [])
     end
 end
